@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+{% extends 'doctorwork/index_doctor.html' %}
+{% block content %}
+<div class="card">
+   {% csrf_token %}
+                <h5 class="card-header">User List</h5>
+                <div class="table-responsive text-nowrap">
+                  <table class="table">
+                    <thead>
+                      <tr>
+                        <th>name</th>
+                        <th>Age</th>
+                        <th>Gender</th>
+                        <th>Address</th>
+                        <th>Contact</th>
+                        <th>email</th>
+<!--                        <th>Send Presciption</th>-->
+                      </tr>
+                    </thead>
+                    <tbody class="table-border-bottom-0">
+                     {% for i in data %}
+                      <tr>
+                        <td><i class="fab fa-angular fa-lg text-danger me-3"></i> <strong>{{i.name}}</strong></td>
+                        <td>{{i.age}}</td>
+                        <td>{{i.gender}}</td>
+                        <td>{{i.address}}</td>
+                        <td>{{i.contact_no}}</td>
+                        <td>{{i.email}}</td>
+<!--                         <td><a href="{% url 'prescriptionpage' %}"><button type="submit" class="btn btn-info" >Send</button></a></td>-->
+                      </tr>
+                     {% endfor %}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+{% endblock %}

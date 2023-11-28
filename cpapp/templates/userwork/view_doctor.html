@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+{% extends 'userwork/index_user.html' %}
+{% block content %}
+<div class="card">
+                <h5 class="card-header">View Doctor</h5>
+                <div class="table-responsive text-nowrap">
+                  <table class="table">
+                    <thead>
+                      <tr>
+                        <th>name</th>
+                        <th>qualification</th>
+                        <th>experience</th>
+                        <th>address</th>
+                        <th>phone_no</th>
+                        <th>email</th>
+                        <th>picture</th>
+<!--                        <th>Actions</th>-->
+                      </tr>
+                    </thead>
+                    <tbody class="table-border-bottom-0">
+                     {% for i in data %}
+                      <tr>
+                        <td><i class="fab fa-angular fa-lg text-danger me-3"></i> <strong>{{i.name}}</strong></td>
+                        <td>{{i.qualification}}</td>
+                        <td>{{i.experience}}</td>
+                        <td>{{i.address}}</td>
+                        <td>{{i.phone_no}}</td>
+                        <td>{{i.email}}</td>
+                        <td><img src="{{i.pic.url}}" width="90px" height="90px"></td>
+<!--                            <td><a href="{% url 'chatwithdoctor' %}"><button type="submit" class="btn btn-info">Select</button></a>-->
+                        </td>
+                      </tr>
+                     {% endfor %}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+
+<!--<div>-->
+<!--    <h1 id="demo2">NO order</h1>-->
+<!--</div>-->
+
+<!--<script>-->
+<!--    let data=localStorage.getItem('order')-->
+<!--    if(data=="true"){-->
+<!--    let user =localStorage.getItem('user')-->
+<!--    let address =localStorage.getItem('address')-->
+<!--    let phone =localStorage.getItem('phone')-->
+<!--    let medicine =localStorage.getItem('medicine')-->
+<!--    let tablet =localStorage.getItem('tablet')-->
+<!--    console.log("data")-->
+<!--    document.getElementById('demo2').innerHTML=`order Success ${medicine} <li>${user}</li><li>${address}</li><li>${phone}</li><li>${tablet}</l>`-->
+<!--    }-->
+<!--</script>-->
+{% endblock %}

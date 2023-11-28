@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+{% extends 'userwork/index_user.html' %}
+{% block content %}
+<style>
+
+<!--* {-->
+<!--  box-sizing: border-box;-->
+<!--}-->
+
+/* Create three equal columns that floats next to each other */
+.column {
+  float: left;
+  width: 33.33%;
+  padding: 50px;
+  transition: 0.3s;
+  height: 500px; /* Should be removed. Only for demonstration */
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+
+
+.card:hover {
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+.container {
+  padding: 2px 16px;
+}
+</style>
+<body>
+
+
+<div class="row">
+  <div class="column">
+<!--    <h2>Column 1</h2>-->
+<!--    <p>Some text..</p>-->
+  </div>
+
+    {% for i in data %}
+<!--  <div class="column" style="background-color:#fff;">-->
+<div class="column" style="background-color:#fff;">
+
+  <div class="container">
+    <br> <h4><b> Name :<span id="demo"> {{i.name}}</span></b></h4>
+    <h4>Age : {{i.age}}</h4>
+    <h4>Gender : {{i.gender}}</h4>
+    <h4>Address : <span id="demo2"> {{i.address}}</span></h4>
+    <h4>Contact : <span id="demo1"> {{i.contact_no}}</span></h4>
+    <h4>Email id : {{i.email}}</h4><br>
+    <a href="{% url 'update_userprofile' i.id %}"><button type="submit" class="btn btn-info" >Edit</button></a>
+
+  </div>
+
+</div>
+  </div>
+ {% endfor %}
+   <div class="column">
+<!--    <h2>Column 3</h2>-->
+<!--    <p>Some text..</p>-->
+  </div>
+</div>
+<script>
+  let user =document.getElementById('demo').innerHTML;
+  let phone =document.getElementById('demo1').innerHTML;
+  let address =document.getElementById('demo2').innerHTML;
+  console.log(user)
+  console.log(phone)
+
+  let med = JSON.parse(localStorage.getItem('med'))
+console.log(med.tab)
+
+  const userData = [{
+        user : user,
+        phone: phone,
+        address: address,
+        med1 : med.medicine,
+        tab: med.tab
+  }]
+
+console.log(userData)
+
+localStorage.setItem("userData",JSON.stringify(userData))
+
+  localStorage.setItem("user",stringify(user))
+  localStorage.setItem('phone',phone)
+  localStorage.setItem('address',address)
+</script>
+{% endblock %}
+<h2>Three Equal Columns</h2>
+</body>

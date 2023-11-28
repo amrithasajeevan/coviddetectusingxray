@@ -1,0 +1,52 @@
+
+<!DOCTYPE html>
+{% extends 'adminwork/index_admin.html' %}
+{% block content %}
+<div class="card">
+                <h5 class="card-header">View Doctor</h5>
+                <div class="table-responsive text-nowrap">
+                  <table class="table">
+                    <thead>
+                      <tr>
+                        <th>name</th>
+                        <th>qualification</th>
+                        <th>experience</th>
+                        <th>address</th>
+                        <th>phone_no</th>
+                        <th>email</th>
+                        <th>pic</th>
+                        <th>Actions</th>
+                      </tr>
+                    </thead>
+                    <tbody class="table-border-bottom-0">
+                     {% for i in data %}
+                      <tr>
+                        <td><i class="fab fa-angular fa-lg text-danger me-3"></i> <strong>{{i.name}}</strong></td>
+                        <td>{{i.qualification}}</td>
+                        <td>{{i.experience}}</td>
+                        <td>{{i.address}}</td>
+                        <td>{{i.phone_no}}</td>
+                        <td>{{i.email}}</td>
+                        <td><img src="{{i.pic.url}}" width="90px" height="90px"></td>
+                        <td>
+                            {% if i.status == 0 %}
+                            <a  href="{% url 'approve_doctor' i.user_id %}"><button type="submit" class="btn btn-info">Accept</button></a>
+<!--                            <a  href="{% url 'reject_doctor' i.user_id %}"><button type="submit" class="btn btn-info">Remove</button></a>-->
+                            {% elif i.status == 1  %}
+                            <p class="btn btn-success"> approved</p>
+                            {% else  %}
+                            <p class="btn btn-danger">rejected</p>
+                            {% endif %}
+                            <form action="{% url 'remove_doctor' i.id %}" method="post">
+                                {% csrf_token %}
+                                <input type="hidden" name="doctor" value="{{i.id}}" />
+                                <br><button type="submit" class="btn btn-info">Delete</button>
+                            </form>
+                        </td>
+                      </tr>
+                     {% endfor %}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+{% endblock %}

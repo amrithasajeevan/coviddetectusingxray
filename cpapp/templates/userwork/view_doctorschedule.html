@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+{% extends 'userwork/index_user.html' %}
+{% block content %}
+<div class="card">
+                <h5 class="card-header">View Schedule</h5>
+                <div class="table-responsive text-nowrap">
+                  <table class="table">
+                    <thead>
+                      <tr>
+                        <th>date</th>
+                        <th>Doctor_Name</th>
+                        <th>start_time</th>
+                        <th>end_time</th>
+                      </tr>
+                    </thead>
+                    <tbody class="table-border-bottom-0">
+                     {% for i in data %}
+                      <tr>
+                        <td>{{i.date}}</td>
+                        <td><i class="fab fa-angular fa-lg text-danger me-3"></i> <strong>{{i.doctor_name}}</strong></td>
+                        <td>{{i.start_time}}</td>
+                        <td>{{i.end_time}}</td>
+                      </tr>
+                     {% endfor %}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+{% endblock %}

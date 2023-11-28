@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+{% extends 'doctorwork/index_doctor.html' %}
+{% block content %}
+<style>
+
+<!--* {-->
+<!--  box-sizing: border-box;-->
+<!--}-->
+
+/* Create three equal columns that floats next to each other */
+.column {
+  float: left;
+  width: 33.33%;
+  padding: 5px;
+  transition: 0.3s;
+  height: 800px; /* Should be removed. Only for demonstration */
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+
+
+.card:hover {
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+.container {
+  padding: 2px 16px;
+}
+</style>
+<body>
+
+
+<div class="row">
+  <div class="column">
+<!--    <h2>Column 1</h2>-->
+<!--    <p>Some text..</p>-->
+  </div>
+
+    {% for i in data %}
+<!--  <div class="column" style="background-color:#fff;">-->
+<div class="column" style="background-color:#fff;">
+  <img src="{{i.pic.url}}" alt="Avatar" style="width:100%">
+  <div class="container">
+    <br> <h4><b> Name : {{i.name}}</b></h4>
+    <h4>Qualification : {{i.qualification}}</h4>
+    <h4>Experience : {{i.experience}}</h4>
+    <h4>Address : {{i.address}}</h4>
+    <h4>Contact : {{i.phone_no}}</h4>
+    <h4>Email id : {{i.email}}</h4><br>
+    <a href="{% url 'update_doctor' i.id %}"><button type="submit" class="btn btn-info" >Edit</button></a>
+
+  </div>
+
+</div>
+  </div>
+ {% endfor %}
+   <div class="column">
+<!--    <h2>Column 3</h2>-->
+<!--    <p>Some text..</p>-->
+  </div>
+</div>
+
+{% endblock %}
+<h2>Three Equal Columns</h2>
+</body>

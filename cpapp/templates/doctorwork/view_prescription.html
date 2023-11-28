@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+{% extends 'doctorwork/index_doctor.html' %}
+{% block content %}
+<div class="card">
+                <h5 class="card-header">View Prescription</h5>
+                <div class="table-responsive text-nowrap">
+                  <table class="table">
+                    <thead>
+                      <tr>
+                        <th>date</th>
+                          <th>doctor</th>
+                        <th>name</th>
+                        <th>medicine_details</th>
+                        <th>Edit</th>
+                        <th>Delete</th>
+                      </tr>
+                    </thead>
+                    <tbody class="table-border-bottom-0">
+                     {% for i in data %}
+                      <tr>
+                        <td>{{i.date}}</td>
+                          <td>{{i.doctor}}</td>
+                        <td><i class="fab fa-angular fa-lg text-danger me-3"></i> <strong>{{i.patient}}</strong></td>
+
+                        <td>{{i.medicine_details}}</td>
+                        <td><a href="{% url 'edit_prescription' i.id %}"><button type="submit" class="btn btn-info" >Edit</button></a></td>
+                        <td><a href="{% url 'remove_prescription' i.id %}"><button type="submit" class="btn btn-info" >Delete</button></a></td>
+                      </tr>
+                     {% endfor %}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+{% endblock %}
